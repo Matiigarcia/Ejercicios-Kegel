@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#080E1C">
+  <meta name="description" content="KegeFit Pro — App gratuita de entrenamiento Kegel para hombres. Programa de 12 semanas, 25 ejercicios de Kegel Yoga y suelo pélvico, timer guiado. Mejorá tu vida sexual sin suscripciones.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="KegeFit Pro">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="KegeFit Pro — Entrenamiento Kegel Masculino">
+  <meta property="og:description" content="Programa de 12 semanas, 100% gratuito. Mejorá tu vida sexual con ejercicios de suelo pélvico basados en evidencia científica.">
+  <meta property="og:type" content="website">
+
+  <title>KegeFit Pro — Entrenamiento Kegel Masculino</title>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Favicon / App icons -->
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <div id="app">
+    <!-- La app se renderiza via JS -->
+    <div style="display:flex;align-items:center;justify-content:center;height:100dvh;flex-direction:column;gap:16px">
+      <div style="font-size:48px;animation:spin 1s linear infinite">💪</div>
+      <p style="color:#8899BB;font-family:Inter,sans-serif">Cargando KegeFit Pro...</p>
+    </div>
+  </div>
+
+  <style>
+    @keyframes spin { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+  </style>
+
+  <!-- Scripts en orden de dependencia -->
+  <script src="js/exercises.js"></script>
+  <script src="js/program.js"></script>
+  <script src="js/tutorials.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/timer.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(reg => console.log('SW registrado:', reg.scope))
+          .catch(err => console.log('SW error:', err));
+      });
+    }
+  </script>
+</body>
+</html>

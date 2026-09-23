@@ -1,0 +1,496 @@
+/* exercise-animations.css — Tutoriales animados en CSS/SVG para KegeFit Pro */
+
+/* ═══════════════════════════════════════════════════════
+   CONTENEDOR DEL TUTORIAL
+═══════════════════════════════════════════════════════ */
+.exercise-tutorial {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.tutorial-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+
+.tutorial-svg-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--surface-3);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  min-height: 160px;
+  position: relative;
+}
+
+.tutorial-svg-wrap svg {
+  max-width: 100%;
+  height: 150px;
+}
+
+.tutorial-steps {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.t-step {
+  font-size: 11px;
+  color: var(--text-secondary);
+  background: var(--surface-3);
+  border-radius: var(--radius-full);
+  padding: 3px 10px;
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════════════════
+   COLORES Y ESTILOS DE FIGURAS
+═══════════════════════════════════════════════════════ */
+.fig-body { fill: none; stroke: var(--primary); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.fig-head { fill: var(--primary); opacity: 0.9; }
+.fig-ground { stroke: var(--surface-4); stroke-width: 2; }
+.fig-arrow { fill: var(--accent); opacity: 0.9; }
+.fig-muscle { fill: none; stroke: #FF4757; stroke-width: 2; opacity: 0.7; }
+.fig-glow { fill: none; stroke: var(--primary); stroke-width: 6; opacity: 0.15; stroke-linecap: round; }
+.fig-label { font-family: Inter, sans-serif; font-size: 9px; fill: var(--text-muted); }
+.fig-active-label { font-family: Inter, sans-serif; font-size: 9px; fill: var(--primary); font-weight: 600; }
+
+/* ═══════════════════════════════════════════════════════
+   ANIMACIÓN: PUENTE DE GLÚTEOS
+   Figura lateral acostada levantando la pelvis
+═══════════════════════════════════════════════════════ */
+@keyframes bridge-hips-up {
+  0%, 100%   { transform: translateY(0px) rotate(0deg); }
+  40%, 60%   { transform: translateY(-22px) rotate(-8deg); }
+}
+@keyframes bridge-left-leg {
+  0%, 100%   { transform: rotate(0deg); }
+  40%, 60%   { transform: rotate(-12deg); }
+}
+@keyframes bridge-right-leg {
+  0%, 100%   { transform: rotate(0deg); }
+  40%, 60%   { transform: rotate(5deg); }
+}
+@keyframes bridge-glow {
+  0%, 100%   { opacity: 0.08; }
+  40%, 60%   { opacity: 0.35; }
+}
+@keyframes arrow-bounce {
+  0%, 100%   { transform: translateY(0); opacity: 0.3; }
+  40%, 60%   { transform: translateY(-18px); opacity: 1; }
+}
+
+.bridge-pelvis {
+  transform-origin: 160px 95px;
+  animation: bridge-hips-up 3s ease-in-out infinite;
+}
+.bridge-torso-glow {
+  transform-origin: 160px 95px;
+  animation: bridge-hips-up 3s ease-in-out infinite, bridge-glow 3s ease-in-out infinite;
+}
+.bridge-arrow {
+  animation: arrow-bounce 3s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMACIÓN: SENTADILLA
+═══════════════════════════════════════════════════════ */
+@keyframes squat-body-down {
+  0%, 10%, 90%, 100%  { transform: translateY(0); }
+  40%, 60%            { transform: translateY(28px); }
+}
+@keyframes squat-knees-bend {
+  0%, 10%, 90%, 100%  { transform: rotate(0deg); }
+  40%, 60%            { transform: rotate(35deg); }
+}
+@keyframes squat-arms {
+  0%, 10%, 90%, 100%  { transform: rotate(0deg); }
+  40%, 60%            { transform: rotate(40deg); }
+}
+@keyframes squat-kegel-pulse {
+  0%, 30%, 70%, 100%  { opacity: 0; }
+  45%, 55%            { opacity: 0.8; }
+}
+
+.squat-body {
+  transform-origin: 200px 60px;
+  animation: squat-body-down 3.5s ease-in-out infinite;
+}
+.squat-knee-l {
+  transform-origin: 185px 115px;
+  animation: squat-knees-bend 3.5s ease-in-out infinite;
+}
+.squat-knee-r {
+  transform-origin: 215px 115px;
+  animation: squat-knees-bend 3.5s ease-in-out infinite;
+}
+.squat-arm-l {
+  transform-origin: 190px 80px;
+  animation: squat-arms 3.5s ease-in-out infinite;
+}
+.squat-arm-r {
+  transform-origin: 210px 80px;
+  animation: squat-arms 3.5s ease-in-out infinite;
+}
+.squat-kegel-label {
+  animation: squat-kegel-pulse 3.5s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMACIÓN: KEGEL (contracción muscular)
+═══════════════════════════════════════════════════════ */
+@keyframes kegel-pulse-ring {
+  0%, 100%  { r: 18; opacity: 0.1; stroke-width: 3; }
+  50%       { r: 28; opacity: 0.6; stroke-width: 2; }
+}
+@keyframes kegel-core-pulse {
+  0%, 100%  { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 1; transform: scale(1.15); }
+}
+@keyframes kegel-wave {
+  0%        { stroke-dashoffset: 60; opacity: 0.2; }
+  50%       { stroke-dashoffset: 0; opacity: 0.8; }
+  100%      { stroke-dashoffset: -60; opacity: 0.2; }
+}
+@keyframes kegel-seated-breathe {
+  0%, 100%  { transform: scaleY(1); }
+  50%       { transform: scaleY(0.96); }
+}
+
+.kegel-ring { animation: kegel-pulse-ring 2s ease-in-out infinite; }
+.kegel-ring-2 { animation: kegel-pulse-ring 2s ease-in-out infinite 0.4s; }
+.kegel-ring-3 { animation: kegel-pulse-ring 2s ease-in-out infinite 0.8s; }
+.kegel-core { transform-origin: 200px 110px; animation: kegel-core-pulse 2s ease-in-out infinite; }
+.kegel-wave { stroke-dasharray: 30 10; animation: kegel-wave 2s linear infinite; }
+.kegel-figure { transform-origin: 200px 80px; animation: kegel-seated-breathe 2s ease-in-out infinite; }
+
+/* ═══════════════════════════════════════════════════════
+   ANIMACIÓN: MARIPOSA (butterfly stretch)
+═══════════════════════════════════════════════════════ */
+@keyframes butterfly-knee-l {
+  0%, 100%  { transform: rotate(0deg); }
+  50%       { transform: rotate(12deg); }
+}
+@keyframes butterfly-knee-r {
+  0%, 100%  { transform: rotate(0deg); }
+  50%       { transform: rotate(-12deg); }
+}
+@keyframes butterfly-torso-lean {
+  0%, 100%  { transform: rotate(0deg) translateY(0); }
+  50%       { transform: rotate(8deg) translateY(4px); }
+}
+
+.butterfly-knee-l {
+  transform-origin: 175px 118px;
+  animation: butterfly-knee-l 3s ease-in-out infinite;
+}
+.butterfly-knee-r {
+  transform-origin: 225px 118px;
+  animation: butterfly-knee-r 3s ease-in-out infinite;
+}
+.butterfly-torso {
+  transform-origin: 200px 90px;
+  animation: butterfly-torso-lean 3s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMACIÓN: PUENTE UNILATERAL
+═══════════════════════════════════════════════════════ */
+@keyframes unilateral-hips {
+  0%, 100%  { transform: translateY(0) rotate(0deg); }
+  40%, 60%  { transform: translateY(-20px) rotate(-5deg); }
+}
+@keyframes unilateral-leg {
+  0%, 100%  { transform: rotate(0deg); }
+  40%, 60%  { transform: rotate(-25deg); }
+}
+
+.unilateral-hips {
+  transform-origin: 160px 95px;
+  animation: unilateral-hips 3s ease-in-out infinite;
+}
+.unilateral-leg-ext {
+  transform-origin: 185px 110px;
+  animation: unilateral-leg 3s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMACIÓN: POSTURA DEL NIÑO (Child's Pose)
+═══════════════════════════════════════════════════════ */
+@keyframes childs-pose-breathe {
+  0%, 100%  { transform: scaleX(1) scaleY(1); }
+  50%       { transform: scaleX(1.02) scaleY(0.98); }
+}
+@keyframes childs-pose-glow {
+  0%, 100%  { opacity: 0.15; }
+  50%       { opacity: 0.5; }
+}
+
+.childs-body {
+  transform-origin: 200px 120px;
+  animation: childs-pose-breathe 4s ease-in-out infinite;
+}
+.childs-glow {
+  animation: childs-pose-glow 4s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMACIÓN: RESPIRACIÓN DIAFRAGMÁTICA
+═══════════════════════════════════════════════════════ */
+@keyframes diaphragm-belly-out {
+  0%, 100%  { transform: scaleX(1); }
+  40%, 60%  { transform: scaleX(1.2); }
+}
+@keyframes diaphragm-chest-still {
+  0%, 100%  { transform: scaleX(1); }
+  40%, 60%  { transform: scaleX(1.03); }
+}
+@keyframes diaphragm-arrow-lr {
+  0%, 100%  { transform: scaleX(1); opacity: 0.3; }
+  40%, 60%  { transform: scaleX(1.3); opacity: 1; }
+}
+@keyframes inhale-label {
+  0%, 30%, 70%, 100%  { opacity: 0.3; }
+  40%, 60%            { opacity: 1; }
+}
+
+.diaphragm-belly {
+  transform-origin: 200px 115px;
+  animation: diaphragm-belly-out 4s ease-in-out infinite;
+}
+.diaphragm-chest {
+  transform-origin: 200px 85px;
+  animation: diaphragm-chest-still 4s ease-in-out infinite;
+}
+.diaphragm-arrow {
+  transform-origin: 200px 115px;
+  animation: diaphragm-arrow-lr 4s ease-in-out infinite;
+}
+.inhale-label { animation: inhale-label 4s ease-in-out infinite; }
+
+/* ═══════════════════════════════════════════════════════
+   ANIMACIÓN: FIGURA 4 STRETCH
+═══════════════════════════════════════════════════════ */
+@keyframes figure4-pull {
+  0%, 100%  { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes figure4-stretch-glow {
+  0%, 100%  { opacity: 0.1; }
+  50%       { opacity: 0.5; }
+}
+
+.figure4-legs {
+  transform-origin: 200px 100px;
+  animation: figure4-pull 3s ease-in-out infinite;
+}
+.figure4-glow {
+  animation: figure4-stretch-glow 3s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMACIÓN: HIPOPRESIVO
+═══════════════════════════════════════════════════════ */
+@keyframes hypopressive-vacuum {
+  0%, 20%, 80%, 100%  { transform: scaleX(1) scaleY(1); }
+  40%, 60%            { transform: scaleX(0.85) scaleY(0.92); }
+}
+@keyframes hypopressive-ribs {
+  0%, 20%, 80%, 100%  { transform: scaleX(1); }
+  40%, 60%            { transform: scaleX(1.12); }
+}
+@keyframes hypopressive-glow {
+  0%, 20%, 80%, 100%  { opacity: 0.05; }
+  40%, 60%            { opacity: 0.4; }
+}
+
+.hypopressive-belly {
+  transform-origin: 200px 108px;
+  animation: hypopressive-vacuum 5s ease-in-out infinite;
+}
+.hypopressive-ribs {
+  transform-origin: 200px 88px;
+  animation: hypopressive-ribs 5s ease-in-out infinite;
+}
+.hypopressive-glow {
+  animation: hypopressive-glow 5s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMACIÓN: HAPPY BABY
+═══════════════════════════════════════════════════════ */
+@keyframes happy-baby-rock {
+  0%, 100%  { transform: rotate(-3deg); }
+  50%       { transform: rotate(3deg); }
+}
+
+.happy-baby-body {
+  transform-origin: 200px 110px;
+  animation: happy-baby-rock 3s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMACIÓN: RESPIRACIÓN 4-7-8
+═══════════════════════════════════════════════════════ */
+@keyframes breathing-478-expand {
+  0%   { transform: scale(1); opacity: 0.4; }
+  21%  { transform: scale(1.2); opacity: 0.9; }   /* inhale 4s */
+  58%  { transform: scale(1.2); opacity: 0.9; }   /* hold 7s */
+  100% { transform: scale(0.85); opacity: 0.6; }  /* exhale 8s */
+}
+@keyframes breathing-478-text {
+  0%       { opacity: 1; }
+  5%       { opacity: 0; }
+  21%, 26% { opacity: 1; }
+  27%      { opacity: 0; }
+  58%, 63% { opacity: 1; }
+  64%      { opacity: 0; }
+  99%      { opacity: 1; }
+}
+
+.b478-circle {
+  transform-origin: 200px 100px;
+  animation: breathing-478-expand 19s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMACIÓN: SENTADILLA SUMO
+═══════════════════════════════════════════════════════ */
+@keyframes sumo-squat-down {
+  0%, 10%, 90%, 100%  { transform: translateY(0); }
+  40%, 60%            { transform: translateY(32px); }
+}
+@keyframes sumo-leg-spread-l {
+  0%, 10%, 90%, 100%  { transform: rotate(-35deg); }
+  40%, 60%            { transform: rotate(-60deg); }
+}
+@keyframes sumo-leg-spread-r {
+  0%, 10%, 90%, 100%  { transform: rotate(35deg); }
+  40%, 60%            { transform: rotate(60deg); }
+}
+
+.sumo-body {
+  transform-origin: 200px 70px;
+  animation: sumo-squat-down 3.5s ease-in-out infinite;
+}
+.sumo-leg-l {
+  transform-origin: 190px 100px;
+  animation: sumo-leg-spread-l 3.5s ease-in-out infinite;
+}
+.sumo-leg-r {
+  transform-origin: 210px 100px;
+  animation: sumo-leg-spread-r 3.5s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMACIONES: KEGEL YOGA & SOMÁTICOS
+═══════════════════════════════════════════════════════ */
+
+/* 1. Mesa Invertida (Reverse Tabletop) */
+@keyframes tabletop-rise {
+  0%, 100%   { transform: translateY(0); }
+  40%, 65%   { transform: translateY(-26px); }
+}
+@keyframes tabletop-glow {
+  0%, 100%   { opacity: 0.1; }
+  40%, 65%   { opacity: 0.6; }
+}
+.tabletop-body-lift {
+  transform-origin: 150px 145px;
+  animation: tabletop-rise 3.2s ease-in-out infinite;
+}
+.tabletop-pelvis-glow {
+  transform-origin: 200px 130px;
+  animation: tabletop-rise 3.2s ease-in-out infinite, tabletop-glow 3.2s ease-in-out infinite;
+}
+
+/* 2. Patada en Cuadrupedia (Donkey Kick) */
+@keyframes donkey-leg-kick {
+  0%, 100%   { transform: rotate(0deg); }
+  40%, 60%   { transform: rotate(-38deg); }
+}
+@keyframes donkey-glute-pulse {
+  0%, 100%   { transform: scale(1); opacity: 0.25; }
+  40%, 60%   { transform: scale(1.4); opacity: 1; }
+}
+.donkey-moving-leg {
+  transform-origin: 235px 125px;
+  animation: donkey-leg-kick 2.8s ease-in-out infinite;
+}
+.donkey-glute-spot {
+  transform-origin: 230px 120px;
+  animation: donkey-glute-pulse 2.8s ease-in-out infinite;
+}
+
+/* 3. Liberación de Psoas (Knee to Chest) */
+@keyframes psoas-hug {
+  0%, 100%   { transform: translateX(0); }
+  45%, 65%   { transform: translateX(-12px); }
+}
+@keyframes psoas-wave-flow {
+  0%   { stroke-dashoffset: 60; opacity: 0.3; }
+  50%  { stroke-dashoffset: 0; opacity: 0.9; }
+  100% { stroke-dashoffset: -60; opacity: 0.3; }
+}
+.psoas-knee-group {
+  transform-origin: 180px 140px;
+  animation: psoas-hug 3s ease-in-out infinite;
+}
+.psoas-nerve-line {
+  stroke-dasharray: 20 8;
+  animation: psoas-wave-flow 2.5s linear infinite;
+}
+
+/* 4. Mariposa Reclinada (Supta Baddha) */
+@keyframes supta-knee-splay-l {
+  0%, 100%   { transform: rotate(0deg); }
+  50%        { transform: rotate(-15deg); }
+}
+@keyframes supta-knee-splay-r {
+  0%, 100%   { transform: rotate(0deg); }
+  50%        { transform: rotate(15deg); }
+}
+@keyframes supta-pelvic-breath {
+  0%, 100%   { transform: scale(0.9); opacity: 0.2; }
+  50%        { transform: scale(1.25); opacity: 0.75; }
+}
+.supta-knee-l {
+  transform-origin: 200px 140px;
+  animation: supta-knee-splay-l 3.5s ease-in-out infinite;
+}
+.supta-knee-r {
+  transform-origin: 200px 140px;
+  animation: supta-knee-splay-r 3.5s ease-in-out infinite;
+}
+.supta-pelvic-wave {
+  transform-origin: 200px 130px;
+  animation: supta-pelvic-breath 3.5s ease-in-out infinite;
+}
+
+/* 5. Sentadilla Jinete / Postura de la Diosa */
+@keyframes goddess-sink {
+  0%, 100%   { transform: translateY(0); }
+  40%, 65%   { transform: translateY(22px); }
+}
+@keyframes goddess-pelvis-ring {
+  0%, 100%   { transform: scale(0.9); opacity: 0.3; }
+  40%, 65%   { transform: scale(1.3); opacity: 0.95; }
+}
+.goddess-body-group {
+  transform-origin: 200px 80px;
+  animation: goddess-sink 3.2s ease-in-out infinite;
+}
+.goddess-pulse-ring {
+  transform-origin: 200px 142px;
+  animation: goddess-sink 3.2s ease-in-out infinite, goddess-pelvis-ring 3.2s ease-in-out infinite;
+}

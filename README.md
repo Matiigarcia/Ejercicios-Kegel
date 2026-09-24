@@ -4,10 +4,10 @@ App web progresiva (PWA) **100% gratuita y sin suscripciones** para el fortaleci
 
 ## Características
 
-- **25 Ejercicios con Tutoriales Animados en SVG**:
-  - **Suelo Pélvico / Kegels**: Kegel Lento, Rápido, Super Kegel, Ascensor, Invertido, Pulsos.
-  - **Fuerza y Cadena Posterior**: Puente de Glúteos, Puente Elevado, Puente Unilateral, Sentadilla Pélvica, Sentadilla Sumo, Mesa Invertida (Reverse Tabletop), Patada en Cuadrupedia (Donkey Kick), Sentadilla Jinete / Postura de la Diosa, Hipopresivos.
-  - **Flexibilidad y Descompresión**: Liberación de Psoas (Knee to Chest), Mariposa Reclinada (Supta Baddha), Mariposa sentada, Balasana (Niño), Figura 4, Bebé Feliz, Piriforme.
+- **25 Ejercicios con Demostraciones en GIFs Animados y Guías Anatómicas**:
+  - **Suelo Pélvico / Kegels**: Kegel Lento, Rápido, Super Kegel, Ascensor, Invertido, Pulsos (con corte anatómico interactivo).
+  - **Fuerza y Cadena Posterior con GIFs Reales**: Puente de Glúteos, Puente Elevado, Puente Unilateral, Sentadilla Pélvica, Sentadilla Sumo, Mesa Invertida (Reverse Tabletop), Patada en Cuadrupedia (Donkey Kick), Sentadilla Jinete / Postura de la Diosa, Hipopresivos.
+  - **Flexibilidad y Descompresión con GIFs Reales**: Liberación de Psoas (Knee to Chest), Mariposa Reclinada (Supta Baddha), Mariposa sentada, Balasana (Niño), Figura 4, Bebé Feliz, Piriforme.
   - **Respiración Somática**: Respiración Diafragmática, Técnica 4-7-8, Sincronización Respiración + Kegel.
 - **Programa Guiado de 12 Semanas**: Progresión de 4 fases (Activación, Construcción, Intensificación, Maestría).
 - **Plan de Mantenimiento Continuo (Semana 13+)**: 3 sesiones semanales rotativas (Potencia, Control, Recuperación) para mantener los resultados de por vida sin regresión muscular.

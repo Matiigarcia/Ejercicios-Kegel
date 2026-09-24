@@ -1,6 +1,6 @@
 // sw.js — Service Worker KegeFit Pro
 
-const CACHE_NAME = 'kegfit-v3';
+const CACHE_NAME = 'kegfit-v4';
 const ASSETS = [
   './',
   './index.html',
@@ -66,10 +66,10 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Fetch — Cache First strategy
+// Fetch — Cache First strategy con ignoreSearch
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
+    caches.match(event.request, { ignoreSearch: true }).then((cachedResponse) => {
       if (cachedResponse) return cachedResponse;
       return fetch(event.request).then((response) => {
         if (!response || response.status !== 200 || response.type !== 'basic') {
@@ -81,7 +81,11 @@ self.addEventListener('fetch', (event) => {
         });
         return response;
       }).catch(() => {
-        return caches.match('./index.html');
+        // Solo retornar index.html si es una navegación de página principal
+        if (event.request.mode === 'navigate') {
+          return caches.match('./index.html', { ignoreSearch: true });
+        }
+        return caches.match(event.request, { ignoreSearch: true });
       });
     })
   );

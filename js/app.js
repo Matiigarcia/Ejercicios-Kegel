@@ -936,7 +936,28 @@ class KegeFitApp {
 // We need to explicitly assign window.app after construction to override it.
 const _appInstance = new KegeFitApp();
 window.app = _appInstance;
-document.addEventListener('DOMContentLoaded', () => {
-  window.app = _appInstance; // ensure still set after DOM ready
-  _appInstance.init();
-});
+
+function startAppSafely() {
+  window.app = _appInstance;
+  try {
+    _appInstance.init();
+  } catch (err) {
+    console.error('Error al inicializar KegeFit Pro:', err);
+    const appEl = document.getElementById('app');
+    if (appEl) {
+      appEl.innerHTML = `
+        <div style="padding:24px;text-align:center;color:#fff;font-family:Inter,sans-serif;margin-top:40px">
+          <h2>⚠️ Error al iniciar la aplicación</h2>
+          <p style="color:#8899BB;margin:12px 0 20px">${err.message || 'Error desconocido'}</p>
+          <button onclick="localStorage.clear();location.reload()" style="background:#00C896;color:#080E1C;border:none;padding:12px 20px;border-radius:8px;font-weight:700;cursor:pointer">Reiniciar datos y reintentar</button>
+        </div>
+      `;
+    }
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startAppSafely);
+} else {
+  startAppSafely();
+}

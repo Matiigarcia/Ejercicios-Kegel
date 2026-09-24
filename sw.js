@@ -1,6 +1,6 @@
 // sw.js — Service Worker KegeFit Pro
 
-const CACHE_NAME = 'kegfit-v2';
+const CACHE_NAME = 'kegfit-v3';
 const ASSETS = [
   './',
   './index.html',
@@ -16,16 +16,37 @@ const ASSETS = [
   './js/app.js',
   './icons/icon-192.png',
   './icons/icon-512.png',
+  './gifs/all_fours_stretch.gif',
+  './gifs/bridge_elevated.gif',
+  './gifs/bridge_unilateral.gif',
+  './gifs/butterfly.gif',
+  './gifs/childs_pose.gif',
+  './gifs/cossack_wide_squat.gif',
+  './gifs/crab_twist.gif',
+  './gifs/donkey_kick.gif',
+  './gifs/figure_four.gif',
+  './gifs/glute_bridge.gif',
+  './gifs/goddess_squat.gif',
+  './gifs/happy_baby.gif',
+  './gifs/hug_knees_to_chest.gif',
+  './gifs/hypopressive.gif',
+  './gifs/kneeling_hip_flexor.gif',
+  './gifs/kneeling_quad_flexor.gif',
+  './gifs/lying_glute.gif',
+  './gifs/pelvic_squat.gif',
+  './gifs/piriformis_stretch.gif',
+  './gifs/psoas_release.gif',
+  './gifs/reclined_butterfly.gif',
+  './gifs/reverse_tabletop.gif',
+  './gifs/rocking_frog_stretch.gif',
+  './gifs/sumo_squat.gif'
 ];
 
 // Instalar y cachear assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS.filter(url => {
-        // Skip assets that might not exist yet (icons)
-        return !url.includes('.png') || true;
-      })).catch(e => console.log('Cache error:', e));
+      return cache.addAll(ASSETS).catch(e => console.log('Cache error:', e));
     })
   );
   self.skipWaiting();
@@ -60,10 +81,7 @@ self.addEventListener('fetch', (event) => {
         });
         return response;
       }).catch(() => {
-        // Fallback a index.html para navegación
-        if (event.request.destination === 'document') {
-          return caches.match('./index.html');
-        }
+        return caches.match('./index.html');
       });
     })
   );

@@ -139,6 +139,24 @@ const EXERCISE_TUTORIALS = {
     avoid: 'NO acumules tensión residual. Cada relajación de 2 segundos debe devolver el músculo a cero.',
   },
 
+  kegel_trembling: {
+    title: 'Kegel Temblor (Fatiga Muscular)',
+    svg: KEGEL_ANATOMY_SVG,
+    pos: 'Acostado boca arriba con rodillas flexionadas o sentado cómodo.',
+    mov: 'Contraé el piso pélvico al 80-90% de tu fuerza máxima (no al 100%) y mantenelo sostenido sin soltar. Cuando el músculo empiece a temblar, esa es la señal de reclutamiento máximo de fibras. Aguantá el temblor hasta que termine el tiempo.',
+    feel: 'Después de 15-20 segundos, sentís un temblor fino en el periné y la base del pene. Es la fatiga muscular — exactamente lo que buscamos para generar crecimiento.',
+    avoid: 'NO aprietes al 100% desde el principio — te cansás rápido y no llegás al temblor productivo. Mantené un 80-90% sostenido.',
+  },
+
+  kegel_triple_sync: {
+    title: 'Activación Triple (3 Músculos Juntos)',
+    svg: KEGEL_ANATOMY_SVG,
+    pos: 'Acostado boca arriba con rodillas flexionadas. Es la mejor posición para sentir los 3 músculos por separado.',
+    mov: 'Activá los 3 músculos en secuencia: primero el pubococcígeo (cortá la orina), luego sumá el isquiocavernoso (empujá el pene hacia arriba) y finalmente el bulbocavernoso (exprimí la base del pene). Mantené los 3 activos juntos durante la fase de sostén.',
+    feel: 'Sentís 3 capas de contracción que se suman. La base del pene se siente comprimida desde todos los ángulos. Es mucho más intenso que un Kegel normal.',
+    avoid: 'NO sueltes un músculo cuando activés el siguiente. La clave es SUMAR capas sin perder las anteriores.',
+  },
+
   // ═══════════════════════════════════════════════════════
   // EJERCICIOS COMPLEMENTARIOS DE FUERZA (GIFS REALES)
   // ═══════════════════════════════════════════════════════

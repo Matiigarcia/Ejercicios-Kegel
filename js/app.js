@@ -231,7 +231,7 @@ class KegeFitApp {
     el.innerHTML = `
       <div class="exercises-header">
         <h2>Biblioteca de Ejercicios</h2>
-        <p>25 ejercicios respaldados por evidencia científica y Kegel Yoga somático</p>
+        <p>27 ejercicios respaldados por evidencia científica y Kegel Yoga somático</p>
       </div>
       <div class="category-filters">
         <button class="filter-btn active" onclick="app.filterExercises('all',this)">Todos</button>
@@ -906,7 +906,7 @@ class KegeFitApp {
             <h2>Bienvenido a KegeFit Pro</h2>
             <p>La app de entrenamiento pélvico masculino <strong>100% gratuita</strong> basada en evidencia científica.</p>
             <div class="ob-facts">
-              <div class="ob-fact">✅ 25 ejercicios completos</div>
+              <div class="ob-fact">✅ 27 ejercicios completos</div>
               <div class="ob-fact">✅ Programa de 12 semanas</div>
               <div class="ob-fact">✅ Timer animado guiado</div>
               <div class="ob-fact">✅ Sin suscripciones</div>
